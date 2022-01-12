@@ -1,6 +1,9 @@
 from turtle import Turtle
 from food import Food
 
+ALLIGN = "center"
+FONT = ("Courier", 24, "normal")
+
 
 class Scoreboard(Turtle):
     def __init__(self):
@@ -9,13 +12,24 @@ class Scoreboard(Turtle):
         self.goto(0,270)
         self.score = 0
         self.color("white")
-        self.write(f"Score: {self.score}", False, align="center", font=("Arial", 24, "normal"))
+        self.update_scoreboard()
         self.hideturtle()
+
+    def update_scoreboard(self):
+        self.write(f"Score: {self.score}", False, align=ALLIGN, font=FONT)
 
     def add_point(self):
         self.clear()
         self.score += 1
-        self.write(f"Score: {self.score}", False, align="center", font=("Arial", 24, "normal"))
+        self.update_scoreboard()
+
+    def lose_msg(self):
+        m = Turtle()
+        m.penup()
+        m.goto(0,0)
+        m.color("white")
+        m.write("GAME OVER", False, align=ALLIGN, font=FONT)
+        m.hideturtle()
 
 
 
