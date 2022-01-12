@@ -18,6 +18,8 @@ class Food(Turtle):
         y = random.randint(-265, 275)
         self.goto(x,y)
 
+    def hide_food(self):
+        self.hideturtle()
 
 
 
