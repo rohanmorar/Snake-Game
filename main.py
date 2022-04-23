@@ -11,21 +11,13 @@ EDGE = 280
 s = Screen()
 s.setup(width=600, height=600)
 s.bgcolor("black")
-s.title("Snake by Rohan M.")
+s.title("Snake")
 s.tracer(0)
 
 snake = Snake()
 food = Food()
 sb = Scoreboard()
 
-
-def game_over_prompt(flag):
-    snake.clear_snake()
-    s.update()
-    food.hide_food()
-    sb.lose_msg()
-    s.update()
-    flag = False
 
 
 sb.isvisible()
@@ -49,11 +41,19 @@ while game_on:
 
     # detect wall collision
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 310 or snake.head.ycor() < -280:
-        game_over_prompt(game_on)
+        sb.reset()
+        snake.reset()
+
+
 
     # detect self collision
     if snake.self_collision():
-        game_over_prompt(game_on)
+        sb.reset()
+        snake.reset()
+
+    
+
+
 
 
 
